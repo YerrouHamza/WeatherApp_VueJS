@@ -20,7 +20,6 @@
         }
     });
 
-
     const aqiBarWidth = computed(() => {
         // Normalize air quality to a percentage scale (0-100)
         return Math.min(Math.max(props.airQuality, 0), 300) / 3;

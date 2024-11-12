@@ -10,9 +10,9 @@
   import Loader from '@/components/Ui-elements/Loader.vue';
   
   const loader = ref(true);
-  const location = ref<object | null>(null);
-  const currentWeather = ref<object | null>(null);
-  const forecastWeather = ref<object | null>(null);
+  const location = ref<any>(null);
+  const currentWeather = ref<any>(null);
+  const forecastWeather = ref<any>(null);
   const temperature = ref<string>('C');
   const measurements = ref<string>('metric');
   const city = ref<string>('casablanca');

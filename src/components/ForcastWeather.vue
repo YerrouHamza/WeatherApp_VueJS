@@ -86,8 +86,6 @@
                             class="size-8"
                             :condition="item?.condition"
                             :time="item?.time"
-                            :latitude="location?.lat"
-                            :longitude="location?.lon"
                         />
                         <p class="font-bold">{{ props.temperature === 'C' ? item?.temp_c : item?.temp_f }}°</p>
                     </div>

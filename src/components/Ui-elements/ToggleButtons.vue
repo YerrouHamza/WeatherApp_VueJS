@@ -3,16 +3,19 @@
 
     const props = defineProps({
         value: {
-            type: String,
+            type: String as PropType<string>,
             required: true,
+            default: '',
         },
         options: {
             type: Array as PropType<{ name: string, id: string }[]>,
             required: true,
+            default: () => [],
         },
         setTheOption: {
             type: Function as PropType<(option: string) => void>,
             required: true,
+            default: () => {},
         },
     });
     

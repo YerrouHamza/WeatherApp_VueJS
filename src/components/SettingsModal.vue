@@ -1,16 +1,16 @@
 <script setup lang="ts">
-    import { ref, watch, defineProps } from 'vue';
+    import { ref, watch } from 'vue';
     import ToggleButtons from '@/components/Ui-elements/ToggleButtons.vue';
 
     // Icons
     import Setting from '@/assets/setting.svg';
 
-    defineProps({
-        temperature: String,
-        measurements: String,
-        onSetTemperature: Function,
-        onSetMeasurements: Function,
-    });
+    const props = defineProps<{
+      temperature: string;
+      measurements: string;
+      onSetTemperature: (option: string) => void;
+      onSetMeasurements: (option: string) => void;
+    }>();
 
     const showModal = ref(false);
 
@@ -40,16 +40,16 @@
       :class="`btn center-dev p-2 size-12 ${showModal ? 'active-btn' : ''}`"
       @click="toggleModal"
     >
-      <Setting class="h-6" />
+      <Setting class="h-6 text-gray-700" />
     </button>
     
     <div v-if="showModal" class="modal setting-modal">
       <div class="mb-6 space-y-2">
         <p class="text-md font-medium">Temperature</p>
         <ToggleButtons
-          :value="temperature"
+          :value="props.temperature"
           :options="[{ name: 'C°', id: 'C' }, { name: 'F°', id: 'F' }]"
-          :setTheOption="onSetTemperature"
+          :setTheOption="props.onSetTemperature"
         />
       </div>
       <div class="space-y-2">
@@ -57,7 +57,7 @@
         <ToggleButtons
           :value="measurements"
           :options="[{ name: 'Metric', id: 'metric' }, { name: 'Imperial', id: 'imperial' }]"
-          :setTheOption="onSetMeasurements"
+          :setTheOption="props.onSetMeasurements"
         />
       </div>
     </div>
