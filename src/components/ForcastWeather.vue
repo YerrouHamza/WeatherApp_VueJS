@@ -7,45 +7,40 @@
     import ToggleButtons from '@/components/Ui-elements/ToggleButtons.vue';
     import WeatherIcon from '@/components/Ui-elements/WeatherIcon.vue';
 
+    const props = defineProps({
+        forecastWeather: {
+            type: Object,
+            required: true,
+            default: () => ({}),
+        },
+        location: {
+            type: Object,
+            required: true,
+            default: () => ({}),
+        },
+        temperature: {
+            type: String,
+            required: true,
+            default: 'C',
+        },
+    });
+
     const selectedOption = ref('1');
     const options = ref([
         { name: 'Hourly Forecast', id: '1' },
         { name: '7-Day Forecast', id: '2' },
     ]);
 
-    // Props
-    const props = defineProps({
-        forecastWeather: {
-            type: Object,
-            required: true,
-        },
-        location: {
-            type: Object,
-            required: true,
-        },
-
-        temperature: {
-            type: String,
-            required: true,
-        },
-    });
-
-    // Computed
     const forecast = computed(() => {
-        console.log('selectedOption', props.forecastWeather);
-        
         if (selectedOption.value === '1') {
             const todayHourly = props.forecastWeather?.forecastday[0]?.hour
-
             const hourly = todayHourly?.filter((item: any) => {
                 return moment(item?.time).isAfter(moment().subtract(1, 'hour'));
             });
-
             if(hourly?.length > 0) {
                 const tommorowHourly = props.forecastWeather?.forecastday[1]?.hour
                 return hourly.concat(tommorowHourly);
             }
-            
             return hourly;
         } else {
             return props.forecastWeather?.forecastday;
@@ -68,11 +63,16 @@
 
         <div class="min-h-[120px]">
             <Swiper
-                :slides-per-view="selectedOption === '1' ? 8.6 : 8"
+                :slides-per-view="3"
                 space-between="10"
                 navigation
                 class="mySwiper"
                 v-if="forecast"
+                :breakpoints="{
+                    640: {
+                        slidesPerView: selectedOption === '1' ? 8.6 : 8,
+                    },
+                }"
             >
                 <SwiperSlide
                     v-for="item in forecast"

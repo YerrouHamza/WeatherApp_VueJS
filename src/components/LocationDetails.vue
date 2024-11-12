@@ -9,10 +9,6 @@
             type: Object,
             required: true,
         },
-        currentTime: {
-            type: String,
-            required: true,
-        },
     });
   
     onMounted(async() => {
@@ -24,9 +20,9 @@
 
 <template>
     <div class="space-y-1">
-        <h1 class="text-5xl font-semibold">{{ props.location?.name }}</h1>
-        <p class="text-gray-600">{{ moment(props.currentTime).format('dddd, MMMM D, YYYY') }}</p>
-        <p class="text-gray-600">{{ moment(props.currentTime).format('HH:mm A') }}</p>
+        <h1 class="text-2xl sm:text-5xl font-semibold">{{ props.location?.name }}</h1>
+        <p class="text-sm sm:text-lg text-gray-600">{{ moment(currentTime).format('dddd, MMMM D, YYYY') }}</p>
+        <p class="text-sm sm:text-lg text-gray-600">{{ moment(currentTime).format('HH:mm A') }}</p>
     </div>
 </template>
 

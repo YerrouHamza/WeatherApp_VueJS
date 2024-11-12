@@ -7,10 +7,10 @@
   import CurrentWeatherDetails from '@/components/CurrentWeatherDetails.vue';
   import ForcastWeather from '@/components/ForcastWeather.vue';
   import SettingsModal from '@/components/SettingsModal.vue';
-
-  const location = ref<any>(null)
-  const currentWeather = ref<any>(null)
-  const forecastWeather = ref<any>(null)
+  
+  const location = ref<object | null>(null);
+  const currentWeather = ref<object | null>(null);
+  const forecastWeather = ref<object | null>(null);
   const temperature = ref<string>('C');
   const measurements = ref<string>('metric');
 
@@ -42,9 +42,9 @@
 </script>
 
 <template>
-  <div class="center-dev flex-col gap-10 h-screen bg-gradient-dark">
-    <div class="card max-w-[800px] max-h-[700px] flex flex-col justify-between">
-      <div class="flex justify-between items-start">
+  <div class="center-dev flex-col gap-10 h-screen p-5 bg-gradient-dark">
+    <div class="card max-w-[800px] sm:max-h-[700px] flex flex-col justify-between">
+      <div class="flex justify-between items-start gap-4">
         <LocationDetails 
           :location="location"
         />
@@ -57,13 +57,13 @@
         />
       </div>
       
-      <CurrentWeatherDetails 
+      <CurrentWeatherDetails
         :currentWeather="currentWeather"
         :temperature="temperature"
         :measurements="measurements"
       />
 
-      <ForcastWeather 
+      <ForcastWeather
         :forecastWeather="forecastWeather"
         :location="location"
         :temperature="temperature"
