@@ -70,7 +70,7 @@
                 v-if="forecast"
                 :breakpoints="{
                     640: {
-                        slidesPerView: selectedOption === '1' ? 8.6 : 8,
+                        slidesPerView: 8,
                     },
                 }"
             >
