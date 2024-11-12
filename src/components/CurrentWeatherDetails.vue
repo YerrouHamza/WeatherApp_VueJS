@@ -3,7 +3,7 @@
 
     // Components
     import WeatherIcon from '@/components/Ui-elements/WeatherIcon.vue';
-    import AirQualityBar from '@/components/Ui-elements/AirQualityBar.vue';
+    import AirQualityBar from '@/components/AirQualityBar.vue';
 
     // Assets
     import HumidityIcon from '@/assets/humidity.svg';
@@ -23,13 +23,13 @@
     <div class="space-y-12">
         <div class="flex justify-between">
             <div class="flex justify-between items-center gap-6">
-            <WeatherIcon class="size-16" :condition="props.currentWeather?.current?.condition" />
-            <h2 class="text-6xl font-bold">{{ props.currentWeather?.current?.temp_c }}°</h2>
+                <WeatherIcon class="size-14" :condition="props.currentWeather?.current?.condition" />
+                <h2 class="text-5xl font-bold">{{ props.currentWeather?.current?.temp_c }}°</h2>
             </div>
 
             <div class="space-y-1 text-right">
-            <p class="font-medium text-3xl">{{ props.currentWeather?.current?.condition.text }}</p>
-            <p class="text-md text-gray-600">Feels like {{ props.currentWeather?.current?.feelslike_c }}°</p>
+                <p class="font-medium text-3xl capitalize">{{ props.currentWeather?.current?.condition.text }}</p>
+                <p class="text-md text-gray-600">Feels like {{ props.currentWeather?.current?.feelslike_c }}°</p>
             </div>
         </div>
 
