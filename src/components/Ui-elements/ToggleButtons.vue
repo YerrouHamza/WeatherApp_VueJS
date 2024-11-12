@@ -22,7 +22,7 @@
 </script>
 
 <template>
-  <div class="flex items-center p-1 bg-gray-200 rounded-lg w-full">
+  <div class="flex items-center p-1 bg-gray-200 rounded-xl w-full">
     <button
         :class="[
             'text-gray-500 px-4 py-1 rounded-lg transition-all duration-200 flex-1',
