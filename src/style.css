@@ -7,3 +7,11 @@
     font-family: "Inter", sans-serif;
   }
 }
+
+.tippy-box[data-theme~='custom'] {
+  @apply bg-white text-gray-700 rounded-lg shadow-xl border border-gray-200;
+}
+
+.tippy-box[data-theme~='custom'] .tippy-arrow {
+  @apply border-gray-400 bg-white text-white shadow-xl;
+}
