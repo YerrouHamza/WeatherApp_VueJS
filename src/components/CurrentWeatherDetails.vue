@@ -34,7 +34,11 @@
     <div class="space-y-12 my-8">
         <div class="flex flex-col sm:flex-row justify-between gap-y-5">
             <div class="flex flex-col sm:flex-row justify-between items-center gap-x-6 gap-y-3">
-                <WeatherIcon class="size-14" :condition="props.currentWeather?.condition" />
+                <WeatherIcon 
+                    class="size-14"
+                    :condition="props.currentWeather?.condition"
+                    :time="props.currentWeather?.last_updated"
+                />
                 <h2 class="text-5xl font-bold">{{ props.temperature === 'C' ? props.currentWeather?.temp_c : props.currentWeather?.temp_f }}°</h2>
             </div>
 
