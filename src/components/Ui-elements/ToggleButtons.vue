@@ -7,7 +7,7 @@
             required: true,
         },
         options: {
-            type: Array as PropType<string[]>,
+            type: Array as PropType<{ name: string, id: string }[]>,
             required: true,
         },
         setTheOption: {
@@ -26,12 +26,13 @@
     <button
         :class="[
             'text-gray-500 px-4 py-1 rounded-lg transition-all duration-200 flex-1',
-            value === option && 'bg-white text-gray-800 shadow'
+            value === option.id && 'bg-white text-gray-800 shadow'
         ]"
         v-for="option in options"
-        @click="toggleOption(option)"
+        :key="option.id"
+        @click="toggleOption(option.id)"
     >
-        {{ option }}
+        {{ option.name }}
     </button>
   </div>
 </template>
