@@ -23,6 +23,11 @@
             type: Object,
             required: true,
         },
+
+        temperature: {
+            type: String,
+            required: true,
+        },
     });
 
     // Computed
@@ -31,13 +36,7 @@
         
         if (selectedOption.value === '1') {
             const todayHourly = props.forecastWeather?.forecastday[0]?.hour
-            const tommorowHourly = props.forecastWeather?.forecastday
 
-            console.log('tommorowHourly', tommorowHourly);
-            console.log('todayHourly', todayHourly);
-            
-            
-            // filter the hourly forecast for get the coming hours only
             const hourly = todayHourly?.filter((item: any) => {
                 return moment(item?.time).isAfter(moment().subtract(1, 'hour'));
             });
@@ -90,7 +89,7 @@
                             :latitude="location?.lat"
                             :longitude="location?.lon"
                         />
-                        <p class="font-bold">{{ item?.temp_c }}°</p>
+                        <p class="font-bold">{{ props.temperature === 'C' ? item?.temp_c : item?.temp_f }}°</p>
                     </div>
 
                     <div class="flex flex-col justify-center items-center gap-y-2 text-md" v-else-if="selectedOption === '2'">
@@ -99,8 +98,8 @@
                         </p>
                         <WeatherIcon class="size-8" :condition="item?.day?.condition" />
                         <div class="text-center">
-                            <p class="font-bold">{{ item?.day?.mintemp_c }}°</p>
-                            <p class="font-bold text-gray-400">{{ item?.day?.maxtemp_c }}°</p>
+                            <p class="font-bold">{{ props.temperature === 'C' ? item?.day?.mintemp_c : item?.day?.mintemp_f }}°</p>
+                            <p class="font-bold text-gray-400">{{ props.temperature === 'C' ? item?.day?.maxtemp_c : item?.day?.maxtemp_f }}°</p>
                         </div>
                     </div>
                 </SwiperSlide>
