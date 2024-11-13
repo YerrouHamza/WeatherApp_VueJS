@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { computed, defineProps, onMounted } from 'vue';
+    import { computed, onMounted } from 'vue';
     import InfoIcon from '@/assets/info.svg';
     import tippy from 'tippy.js';
 

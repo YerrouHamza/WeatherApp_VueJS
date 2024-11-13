@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref, defineProps, onMounted } from 'vue';
+    import { ref, onMounted } from 'vue';
     import moment from 'moment';
 
     const currentTime = ref(moment())
