@@ -15,7 +15,6 @@
   const forecastWeather = ref<any>(null);
   const temperature = ref<string>('C');
   const measurements = ref<string>('metric');
-  const city = ref<string>('casablanca');
 
   onMounted(async() => {
     await fetchedData()
@@ -27,7 +26,7 @@
 
   // Methods
   const fetchedData = async () => {
-    await api.get(`forecast.json?aqi=yes&days=8&q=${city.value}`)
+    await api.get(`forecast.json?aqi=yes&days=8&q=casablanca`)
       .then((res: any) => {
         location.value = res.data?.location
         currentWeather.value = res.data?.current

@@ -21,7 +21,7 @@
 }
 
 .modal {
-  @apply absolute top-0 right-0 z-50 bg-white rounded-md shadow-xl border border-gray-200 py-6 px-3;
+  @apply absolute top-0 right-0 z-50 bg-white rounded-xl shadow-xl border border-gray-200 py-6 px-3;
 }
 
 .active-btn {

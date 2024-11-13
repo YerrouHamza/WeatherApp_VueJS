@@ -39,7 +39,8 @@
             });
             if(hourly?.length > 0) {
                 const tommorowHourly = props.forecastWeather?.forecastday[1]?.hour
-                return hourly.concat(tommorowHourly);
+                let finalHourly = hourly.concat(tommorowHourly).slice(0, 24);
+                return finalHourly;
             }
             return hourly;
         } else {
