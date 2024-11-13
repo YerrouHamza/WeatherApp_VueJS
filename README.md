@@ -4,7 +4,7 @@ Weather app using the Weatherapi API, See the [weatherapi.com API documentation]
 
 ## Description
 
-This is a weather app that displays the current weather, hourly forecast, and 7-day forecast for a given location. The app uses the Weatherapi API to fetch weather data. The user can toggle between Celsius/Fahrenheit and Metric/Imperial units. The settings panel is a modal that is positioned next to the settings button. the app responsive and works on mobile, tablet, and desktop devices with smooth transitions.
+This is a weather app that displays the current weather, hourly forecast, and 7-day forecast for a given location. The app uses the Weatherapi API to fetch weather data. The user can toggle between Celsius/Fahrenheit and Metric/Imperial units. The settings panel is a modal that is positioned next to the settings button. The app automatically gets the user's location and uses it as the default city value. The user can search for a city and navigate to it. The search input is debounced to reduce API requests until the user completes typing. The app is responsive and works on mobile, tablet, and desktop devices with smooth transitions.
 
 ## Features
 
@@ -12,6 +12,9 @@ This is a weather app that displays the current weather, hourly forecast, and 7-
 - Toggle between Celsius/Fahrenheit and Metric/Imperial units
 - Configurable settings panel with a modal positioned next to the settings button
 - Smooth transitions with Vue.js
+- Automatically get the user's location and use it as the default city value
+- Search for a city and navigate to it
+- Debounced search input to reduce API requests until the user completes typing
 
 ## Project Build Stacks and Tools
 
@@ -19,7 +22,6 @@ This project was built with the following technologies and tools:
 
 - **Framework**: Vue.js 3.5
 - **Language**: TypeScript 5.6
-- **Styling**: Tailwind CSS
 - **Styling**: Tailwind CSS – A utility-first CSS framework used for responsive and consistent styling across components.
 - **HTTP Requests**: Axios – Axios is configured with a custom client (axios.create) to handle API requests, setting the base URL, headers, and API key.
 - **Date Formatting**: moment.js – Used for handling date and time formatting, such as determining day/night and displaying formatted timestamps.
