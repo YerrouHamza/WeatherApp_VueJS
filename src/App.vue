@@ -2,18 +2,17 @@
 import { ref, onMounted } from 'vue';
 import api from '@/Api/api';
 
-// Components
 import LocationDetails from './components/LocationDetails.vue';
 import CurrentWeatherDetails from '@/components/CurrentWeatherDetails.vue';
 import ForcastWeather from '@/components/ForcastWeather.vue';
 import SettingsModal from '@/components/SettingsModal.vue';
-import Loader from '@/components/Ui-elements/Loader.vue';
+import OverlayLoader from '@/components/Ui-elements/OverlayLoader.vue';
 import CitySearchModal from '@/components/CitySearchModal.vue';
 
-const loader = ref(true);
-const location = ref<any>(null);
-const currentWeather = ref<any>(null);
-const forecastWeather = ref<any>(null);
+const isloading = ref(true);
+const location = ref<object>({});
+const currentWeather = ref<object>({});
+const forecastWeather = ref<object>({});
 const temperature = ref<string>('C');
 const measurements = ref<string>('metric');
 const city = ref<string>('Casablanca');
@@ -28,7 +27,6 @@ onMounted(async () => {
         await fetchedData(city.value);
       },
 
-      // If user denied the location permission
       async () => {
         await fetchedData();
       }
@@ -42,16 +40,15 @@ onMounted(async () => {
   }, 3600000);
 });
 
-// Methods
 const fetchedData = async (searchCity?: string) => {
   showLoader(true);
 
   await api
     .get(`forecast.json?aqi=yes&days=8&q=${searchCity || city?.value}`)
-    .then((res: any) => {
-      location.value = res.data?.location;
-      currentWeather.value = res.data?.current;
-      forecastWeather.value = res.data?.forecast;
+    .then((res) => {
+      location.value = res?.data?.location;
+      currentWeather.value = res?.data?.current;
+      forecastWeather.value = res?.data?.forecast;
 
       setTimeout(() => {
         showLoader(false);
@@ -69,20 +66,20 @@ const setMeasurements = (option: string) => {
   measurements.value = option;
 };
 const showLoader = (value: boolean) => {
-  loader.value = value;
+  isloading.value = value;
 };
-const openChangeCityModal = (open: Boolean) => {
+const openChangeCityModal = (open: boolean) => {
   showCityModal.value = open as boolean;
 };
-const handelCitySelection = (city: any) => {
-  city.value = city.name;
-  fetchedData(city.name);
+const handelCitySelection = (city: { name: string, value: string }) => {
+  city.value = city?.name;
+  fetchedData(city?.name);
   openChangeCityModal(false);
 };
 </script>
 
 <template>
-  <Loader v-if="loader" />
+  <OverlayLoader v-if="isloading" />
 
   <CitySearchModal
     v-if="showCityModal"
