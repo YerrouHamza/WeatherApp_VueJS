@@ -2,11 +2,7 @@
 import { ref, onMounted } from 'vue';
 import moment from 'moment';
 import tippy from 'tippy.js';
-
-// Icons
 import World from '@/assets/world.svg';
-
-const currentTime = ref(moment());
 
 const props = defineProps({
   location: {
@@ -18,6 +14,8 @@ const props = defineProps({
     required: true,
   },
 });
+
+const currentTime = ref(moment());
 
 onMounted(async () => {
   setInterval(() => {

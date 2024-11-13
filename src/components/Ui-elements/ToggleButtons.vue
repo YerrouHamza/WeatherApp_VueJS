@@ -19,7 +19,6 @@ const props = defineProps({
   },
 });
 
-// Methods
 const toggleOption = (option: string) => {
   props.setTheOption(option);
 };

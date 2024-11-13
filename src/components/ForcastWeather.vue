@@ -28,23 +28,29 @@ const props = defineProps({
 const selectedOption = ref('1');
 
 const forecast = computed(() => {
+  const forecastdays = props.forecastWeather?.forecastday;
+
   if (selectedOption.value === '1') {
-    const todayHourly = props.forecastWeather?.forecastday[0]?.hour;
-    const hourly = todayHourly?.filter((item: any) => {
+    const todayHourly = forecastdays?.find((item: { date: string }) =>
+      moment(item?.date).isSame(moment(), 'day')
+    )?.hour;
+
+    const hourly = todayHourly?.filter((item: { time: string }) => {
       return moment(item?.time).isAfter(moment().subtract(1, 'hour'));
     });
+
     if (hourly?.length > 0) {
-      const tommorowHourly = props.forecastWeather?.forecastday[1]?.hour;
+      const tommorowHourly = forecastdays[1]?.hour;
       let finalHourly = hourly.concat(tommorowHourly).slice(0, 24);
       return finalHourly;
     }
+
     return hourly;
   } else {
-    return props.forecastWeather?.forecastday;
+    return forecastdays;
   }
 });
 
-// Methods
 const setTheOption = (option: string) => {
   selectedOption.value = option;
 };
@@ -75,6 +81,7 @@ const setTheOption = (option: string) => {
       >
         <SwiperSlide
           v-for="item in forecast"
+          :key="item?.id"
           class="flex justify-between items-center gap-6"
         >
           <div

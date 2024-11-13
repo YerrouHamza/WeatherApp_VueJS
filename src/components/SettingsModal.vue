@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import ToggleButtons from '@/components/Ui-elements/ToggleButtons.vue';
-
-// Icons
 import Setting from '@/assets/setting.svg';
 
 const props = defineProps<{

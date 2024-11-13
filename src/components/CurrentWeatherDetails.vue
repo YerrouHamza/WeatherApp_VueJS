@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import { PropType } from 'vue';
-
-// Components
 import WeatherIcon from '@/components/Ui-elements/WeatherIcon.vue';
 import AirQualityBar from '@/components/AirQualityBar.vue';
 
-// Assets
 import HumidityIcon from '@/assets/humidity.svg';
 import WindIcon from '@/assets/wind.svg';
 import PrecipitationIcon from '@/assets/precipitation.svg';
@@ -13,7 +9,7 @@ import AqiIcon from '@/assets/aqi.svg';
 
 const props = defineProps({
   currentWeather: {
-    type: Object as PropType<any>,
+    type: Object,
     required: true,
     default: () => ({}),
   },
@@ -52,7 +48,7 @@ const props = defineProps({
 
       <div class="space-y-1 text-center sm:text-right">
         <p class="font-medium text-3xl capitalize">
-          {{ props.currentWeather?.condition.text }}
+          {{ props.currentWeather?.condition?.text }}
         </p>
         <p class="text-md text-gray-600">
           Feels like
@@ -106,13 +102,13 @@ const props = defineProps({
             <AqiIcon class="size-5" /> AQI
           </span>
           <p class="text-black font-medium">
-            {{ props.currentWeather?.air_quality.co }}
+            {{ props.currentWeather?.air_quality?.co }}
           </p>
         </div>
       </div>
     </div>
 
-    <AirQualityBar :airQuality="props.currentWeather?.air_quality.co" />
+    <AirQualityBar :airQuality="props.currentWeather?.air_quality?.co" />
   </div>
 </template>
 

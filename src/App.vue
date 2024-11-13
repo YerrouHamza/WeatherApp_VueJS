@@ -71,7 +71,7 @@ const showLoader = (value: boolean) => {
 const openChangeCityModal = (open: boolean) => {
   showCityModal.value = open as boolean;
 };
-const handelCitySelection = (city: { name: string, value: string }) => {
+const handelCitySelection = (city: { name: string; value: string }) => {
   city.value = city?.name;
   fetchedData(city?.name);
   openChangeCityModal(false);

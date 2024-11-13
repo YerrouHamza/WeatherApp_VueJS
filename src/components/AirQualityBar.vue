@@ -7,21 +7,21 @@ const props = defineProps({
   airQuality: {
     type: Number,
     required: true,
+    default: 0,
   },
 });
 
 const barBgColor = computed(() => {
   if (props.airQuality <= 50) {
-    return 'bg-green-500'; // Good air quality
+    return 'bg-green-500';
   } else if (props.airQuality <= 100) {
-    return 'bg-yellow-500'; // Moderate air quality
+    return 'bg-yellow-500';
   } else {
-    return 'bg-red-500'; // Poor air quality
+    return 'bg-red-500';
   }
 });
 
 const aqiBarWidth = computed(() => {
-  // Normalize air quality to a percentage scale (0-100)
   return Math.min(Math.max(props.airQuality, 0), 300) / 3;
 });
 

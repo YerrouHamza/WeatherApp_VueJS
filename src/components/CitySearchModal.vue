@@ -22,17 +22,18 @@ const props = defineProps({
 });
 
 const searchQuery = ref('');
-const searchResults = ref([] as any);
-let debounceTimeout: any = null;
+const searchResults = ref(
+  [] as { id: number; name: string; country: string }[]
+);
+let debounceTimeout: NodeJS.Timeout;
 
-// Methods
 const searchCity = async () => {
   if (!searchQuery.value) return;
   props.showLoader(true);
 
   await api
     .get(`search.json?q=${searchQuery.value}`)
-    .then((res: any) => {
+    .then((res) => {
       searchResults.value = res.data;
 
       setTimeout(() => {
@@ -45,7 +46,6 @@ const searchCity = async () => {
     });
 };
 
-// Watchers
 watch(searchQuery, () => {
   if (!searchQuery.value) {
     searchResults.value = [];
@@ -75,7 +75,7 @@ watch(searchQuery, () => {
         />
       </div>
 
-      <div v-if="searchResults.length > 0">
+      <div v-if="Object.keys(searchResults).length > 0">
         <h3 class="text-md font-semibold text-gray-400 mb-2">
           Search Results:
         </h3>
