@@ -65,7 +65,6 @@
             <Swiper
                 :slides-per-view="3"
                 space-between="10"
-                navigation
                 class="mySwiper"
                 v-if="forecast"
                 :breakpoints="{
