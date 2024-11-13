@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
-  import api from '@/Auth/api'
+  import api from '@/Api/api'
 
   // Components
   import LocationDetails from './components/LocationDetails.vue';

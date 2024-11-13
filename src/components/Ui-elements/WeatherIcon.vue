@@ -26,7 +26,7 @@
 
     const iconComponent = computed(() => {
         const hour = moment(props?.time).format('HH') as unknown as number;
-
+        
         if ([1003, 1006, 1009].includes(props.condition?.code)) {
             return cloudyIcon; // Partly Cloudy/Cloudy
         } else if ([1063, 1183, 1186, 1189, 1192, 1195].includes(props.condition?.code)) {

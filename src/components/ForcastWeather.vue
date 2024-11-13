@@ -26,10 +26,6 @@
     });
 
     const selectedOption = ref('1');
-    const options = ref([
-        { name: 'Hourly Forecast', id: '1' },
-        { name: '7-Day Forecast', id: '2' },
-    ]);
 
     const forecast = computed(() => {
         if (selectedOption.value === '1') {
@@ -58,7 +54,10 @@
     <div class="space-y-5">
         <ToggleButtons
             :value="selectedOption"
-            :options="options"
+            :options="[
+                { name: 'Hourly Forecast', id: '1' },
+                { name: '7-Day Forecast', id: '2' },
+            ]"
             :setTheOption="setTheOption"
         />
 

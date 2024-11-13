@@ -19,6 +19,7 @@
         },
     });
     
+    // Methods
     const toggleOption = (option: string) => {
         props.setTheOption(option);
     };
@@ -29,9 +30,9 @@
     <button
         :class="[
             'text-gray-500 px-4 py-1 rounded-lg transition-all duration-200 flex-1',
-            value === option.id && 'bg-white text-gray-800 shadow'
+            props.value === option.id && 'bg-white text-gray-800 shadow'
         ]"
-        v-for="option in options"
+        v-for="option in props.options"
         :key="option.id"
         @click="toggleOption(option.id)"
     >

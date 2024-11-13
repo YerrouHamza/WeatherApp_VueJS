@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-x-10 gap-y-5">
+        <div class="grid grid-cols-2 gap-x-20 gap-y-5">
             <div class="col-span-2 sm:col-span-1 space-y-5">
                 <div class="flex justify-between items-center">
                     <span class="flex items-center gap-x-2">
