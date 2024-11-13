@@ -20,12 +20,25 @@
   const showCityModal = ref(false);
 
   onMounted(async() => {
-    await fetchedData()
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        city.value = `${latitude},${longitude}`;
+        await fetchedData(city.value);
+      }, 
+
+      // If user denied the location permission
+      async () => {
+        await fetchedData();
+      });
+    } else {
+      await fetchedData();
+    }
 
     setInterval(async () => {
-      await fetchedData()
-    }, 3600000)
-  })
+      await fetchedData();
+    }, 3600000);
+  });
 
   // Methods
   const fetchedData = async (searchCity?: string) => {
