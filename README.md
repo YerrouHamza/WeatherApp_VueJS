@@ -1,6 +1,6 @@
-# Weather App
+# Weather App - [Live Link](https://weather-app-eight-henna.vercel.app/)
 
-weather app using the Weatherapi API, See the [weatherapi.com API documentation](https://www.weatherapi.com/docs/) for more information.
+Weather app using the Weatherapi API, See the [weatherapi.com API documentation](https://www.weatherapi.com/docs/) for more information.
 
 ## Description
 
@@ -33,11 +33,11 @@ This project was built with the following technologies and tools:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/weather-app.git
+   git clone https://github.com/YerrouHamza/Weather-app.git
    ```
 2. Navigate to the project folder:
    ```bash
-   cd weather-app
+   cd Weather-app
    ```
 3. Install dependencies:
    ```bash
