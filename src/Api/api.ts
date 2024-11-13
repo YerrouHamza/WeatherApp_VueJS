@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://api.weatherapi.com/v1/',
+  // baseURL: 'http://api.weatherapi.com/v1/', // for development
+  baseURL: 'https://api.weatherapi.com/v1/',
   timeout: 10000, // 10 seconds
   headers: {
     'Content-Type': 'application/json',
