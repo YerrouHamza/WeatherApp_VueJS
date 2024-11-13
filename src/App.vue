@@ -8,6 +8,7 @@
   import ForcastWeather from '@/components/ForcastWeather.vue';
   import SettingsModal from '@/components/SettingsModal.vue';
   import Loader from '@/components/Ui-elements/Loader.vue';
+  import CitySearchModal from '@/components/CitySearchModal.vue';
   
   const loader = ref(true);
   const location = ref<any>(null);
@@ -15,6 +16,8 @@
   const forecastWeather = ref<any>(null);
   const temperature = ref<string>('C');
   const measurements = ref<string>('metric');
+  const city = ref<string>('Casablanca');
+  const showCityModal = ref(false);
 
   onMounted(async() => {
     await fetchedData()
@@ -25,19 +28,21 @@
   })
 
   // Methods
-  const fetchedData = async () => {
-    await api.get(`forecast.json?aqi=yes&days=8&q=casablanca`)
+  const fetchedData = async (searchCity?: string) => {
+    showLoader(true)
+
+    await api.get(`forecast.json?aqi=yes&days=8&q=${searchCity || city?.value}`)
       .then((res: any) => {
         location.value = res.data?.location
         currentWeather.value = res.data?.current
         forecastWeather.value = res.data?.forecast
 
         setTimeout(() => {
-          loader.value = false
+          showLoader(false)
         }, 1000)
       }).catch(() => {
-        loader.value = false
-        console.error('Error')
+        showLoader(false)
+        console.error('Failed to fetch data')
       })
   }
   const setTemperature = (option: string) => {
@@ -46,16 +51,36 @@
   const setMeasurements = (option: string) => {
     measurements.value = option
   }
+  const showLoader = (value: boolean) => {
+    loader.value = value
+  }
+  const openChangeCityModal = (open: Boolean) => {
+    showCityModal.value = open as boolean
+  }
+  const handelCitySelection = (city: any) => {
+    city.value = city.name
+    fetchedData(city.name)
+    openChangeCityModal(false)
+  }
 </script>
 
 <template>
   <loader v-if="loader" />
+
+  <CitySearchModal
+    v-if="showCityModal"
+    :open="showCityModal"
+    :closeModal="() => openChangeCityModal(false)"
+    :showLoader="showLoader"
+    :handelChangeCity="handelCitySelection"
+  />
   
   <div class="center-dev flex-col gap-10 h-screen p-5 bg-gradient-dark">
     <div class="card max-w-[800px] sm:max-h-[700px] flex flex-col justify-between">
       <div class="flex justify-between items-start gap-4">
         <LocationDetails 
           :location="location"
+          :openChangeCityModal="openChangeCityModal"
         />
 
         <SettingsModal
