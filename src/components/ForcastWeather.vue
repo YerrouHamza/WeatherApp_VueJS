@@ -76,14 +76,8 @@ const setTheOption = (option: string) => {
           },
         }"
       >
-        <SwiperSlide
-          v-for="item in forecast"
-          :key="item?.id"
-        >
-          <div
-            class="flex-center-col"
-            v-if="selectedOption === '1'"
-          >
+        <SwiperSlide v-for="item in forecast" :key="item?.id">
+          <div class="flex-center-col" v-if="selectedOption === '1'">
             <p>
               {{
                 moment(item?.time).isSame(moment(), 'hour')
@@ -101,10 +95,7 @@ const setTheOption = (option: string) => {
             </p>
           </div>
 
-          <div
-            class="flex-center-col"
-            v-else-if="selectedOption === '2'"
-          >
+          <div class="flex-center-col" v-else-if="selectedOption === '2'">
             <p>
               {{
                 moment(item?.date).isSame(moment(), 'day')
@@ -112,7 +103,10 @@ const setTheOption = (option: string) => {
                   : moment(item?.date).format('ddd')
               }}
             </p>
-            <WeatherIcon class="forecast_slider-icon" :condition="item?.day?.condition" />
+            <WeatherIcon
+              class="forecast_slider-icon"
+              :condition="item?.day?.condition"
+            />
             <div class="text-center">
               <p class="font-bold">
                 {{

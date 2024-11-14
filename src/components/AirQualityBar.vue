@@ -43,9 +43,9 @@ onMounted(() => {
     </div>
     <div class="air-quality_bar">
       <span
-        :style="{ 
-          width: `${aqiBarWidth}%`, 
-          backgroundColor: `var(--${barColor})`
+        :style="{
+          width: `${aqiBarWidth}%`,
+          backgroundColor: `var(--${barColor})`,
         }"
       >
       </span>
@@ -69,7 +69,7 @@ onMounted(() => {
   width: 1rem;
   color: var(--gray-lighter);
   outline: none;
-  transition: color .3s ease;
+  transition: color 0.3s ease;
 }
 .air-quality_icon:hover {
   color: var(--primary);

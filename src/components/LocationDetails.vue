@@ -56,7 +56,7 @@ onMounted(async () => {
 }
 .location-details_icon {
   height: 2.5rem;
-  color: var(--text-color)
+  color: var(--text-color);
 }
 .location-details_subtitle {
   font-size: var(--font-size-lg);
@@ -69,6 +69,6 @@ onMounted(async () => {
   }
   .location-details_subtitle {
     font-size: var(--font-size-sm);
-  } 
+  }
 }
 </style>

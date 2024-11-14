@@ -1,30 +1,29 @@
 :root {
-  --primary: #2B6CB0;
+  --primary: #2b6cb0;
   --light-primary: rgba(43, 107, 176, 0.3);
-  --danger: #FF6B6B;
-  --warning: #FFD166;
-  --success: #06D6A0;
+  --danger: #ff6b6b;
+  --warning: #ffd166;
+  --success: #06d6a0;
   --light: #ffffff;
   --dark: #000000;
   --gray-lighter: #e5e7eb;
   --gray-light: #9ca3af;
   --gray: #6b7280;
 
-  --text-color-light: #EDF2F7;
+  --text-color-light: #edf2f7;
   --text-color: #4b5563;
-  --text-color-dark: #2D3748;
-
+  --text-color-dark: #2d3748;
 
   --raduis-lg: 1.5rem;
   --raduis-md: 1rem;
-  --raduis: .75rem;
-  --raduis-sm: .5rem;
+  --raduis: 0.75rem;
+  --raduis-sm: 0.5rem;
 
-  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, .25);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --shadow-xl: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   --shadow-primary: rgba(43, 107, 176, 0.7) 0px 0px 0px 4px;
 
-  --font-size-sm: .875rem;
+  --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
   --font-size-lg: 1.125rem;
   --font-title-xl: 3rem;
@@ -56,14 +55,19 @@ button {
 
 #app {
   font-family: 'Inter', sans-serif;
-  background-image: linear-gradient(4deg, rgba(16,20,29,1) 0%, rgba(31,36,44,1) 39%, rgba(45,51,62,1) 72%);
+  background-image: linear-gradient(
+    4deg,
+    rgba(16, 20, 29, 1) 0%,
+    rgba(31, 36, 44, 1) 39%,
+    rgba(45, 51, 62, 1) 72%
+  );
   min-height: 100vh;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: .5rem;
+  gap: 2rem 1rem;
   padding: 1rem;
 }
 
@@ -71,27 +75,27 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 .flex-between {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 .flex-center-col {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 .flex-between-col {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .text-center {
@@ -102,10 +106,12 @@ button {
 }
 
 @media screen and (max-width: 600px) {
-  .flex-center-col.row-sm, .flex-between-col.row-sm {
-    flex-direction: row; 
+  .flex-center-col.row-sm,
+  .flex-between-col.row-sm {
+    flex-direction: row;
   }
-  .flex-center.col-sm, .flex-between.col-sm {
+  .flex-center.col-sm,
+  .flex-between.col-sm {
     flex-direction: column;
   }
 }
@@ -114,10 +120,11 @@ button {
   color: var(--gray-light);
   border: 1px solid var(--gray-lighter);
   border-radius: var(--raduis-sm);
-  padding: .2rem .5rem;
+  padding: 0.2rem 0.5rem;
   font-size: var(--font-size-md);
   box-shadow: var(--shadow-xl);
-  transition: all .2s ease;
+  outline: 0 solid transparent;
+  transition: all 0.2s ease-in-out;
 }
 .btn:hover {
   border-color: var(--gray-light);
@@ -138,7 +145,6 @@ button {
   outline: 2px solid var(--gray-lighter);
   outline-offset: 2px;
   border-color: var(--gray-light);
-
 }
 
 .tippy-box[data-theme~='custom'] {
@@ -146,7 +152,7 @@ button {
   color: var(--color-dark);
   border: 1px solid #dedede;
   border-radius: 0.4rem;
-  box-shadow: var(--shadow-lg)
+  box-shadow: var(--shadow-lg);
 }
 .tippy-box[data-theme~='custom'] .tippy-arrow {
   color: var(--light);
@@ -156,7 +162,8 @@ button {
 
 .overlay {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -164,4 +171,5 @@ button {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
+  padding: 0.5rem;
 }

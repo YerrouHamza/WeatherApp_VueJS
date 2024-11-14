@@ -8,6 +8,7 @@ import ForcastWeather from '@/components/ForcastWeather.vue';
 import SettingsModal from '@/components/Modals/SettingsModal.vue';
 import OverlayLoader from '@/components/Ui-elements/OverlayLoader.vue';
 import CitySearchModal from '@/components/Modals/CitySearchModal.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
 import SettingIcon from '@/assets/setting.svg';
 
 const isloading = ref(true);
@@ -109,7 +110,7 @@ watch(showModal, (value) => {
   />
 
   <SettingsModal
-    v-if="showModal" 
+    v-if="showModal"
     :temperature="temperature"
     :measurements="measurements"
     :onSetTemperature="setTemperature"
@@ -146,17 +147,8 @@ watch(showModal, (value) => {
       :temperature="temperature"
     />
   </div>
-  <div class="text-white text-sm">
-    <p>
-      Created by
-      <a
-        class="font-bold hover:text-blue-500"
-        href="https://github.com/YerrouHamza"
-        target="_blank"
-        >Hamza Yerrou</a
-      >
-    </p>
-  </div>
+
+  <FooterComponent />
 </template>
 
 <style scoped>

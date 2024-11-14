@@ -65,14 +65,10 @@ const props = defineProps({
           <span class="flex-center">
             <HumidityIcon class="stat-icon" /> Humidity
           </span>
-          <p>
-            {{ props.currentWeather?.humidity }}%
-          </p>
+          <p>{{ props.currentWeather?.humidity }}%</p>
         </div>
         <div class="stat-value flex-between">
-          <span class="flex-center">
-            <WindIcon class="stat-icon" /> Wind
-          </span>
+          <span class="flex-center"> <WindIcon class="stat-icon" /> Wind </span>
           <p>
             {{
               measurements === 'metric'
@@ -96,9 +92,7 @@ const props = defineProps({
           </p>
         </div>
         <div class="stat-value flex-between">
-          <span class="flex-center">
-            <AqiIcon class="stat-icon" /> AQI
-          </span>
+          <span class="flex-center"> <AqiIcon class="stat-icon" /> AQI </span>
           <p>
             {{ props.currentWeather?.air_quality?.co }}
           </p>
@@ -161,7 +155,7 @@ const props = defineProps({
   .weather-details .weather_title {
     font-size: var(--font-title-lg);
   }
- 
+
   .condition {
     text-align: center;
   }

@@ -73,8 +73,11 @@ watch(searchQuery, () => {
           @keydown.enter="searchCity"
         />
       </div>
-  
-      <div class="search-result card" v-if="Object.keys(searchResults).length > 0">
+
+      <div
+        class="search-result card"
+        v-if="Object.keys(searchResults).length > 0"
+      >
         <h3 class="title">Search Results</h3>
         <ul class="result-list">
           <li
@@ -105,7 +108,7 @@ watch(searchQuery, () => {
 }
 .search-feild {
   padding: var(--padding-sm);
-  padding: .4rem 1rem;
+  padding: 0.4rem 1rem;
   height: 4rem;
   display: flex;
   align-items: center;
@@ -118,7 +121,7 @@ watch(searchQuery, () => {
 .search-feild .icon {
   width: 1.7rem;
   height: 1.7rem;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   color: var(--gray);
 }
 .search-feild input {
@@ -147,7 +150,7 @@ watch(searchQuery, () => {
   padding: 0;
 }
 .result-list__item {
-  padding: .6rem 1rem;
+  padding: 0.6rem 1rem;
   border-radius: var(--raduis-sm);
   cursor: pointer;
   transition: all 0.2s ease-in-out;

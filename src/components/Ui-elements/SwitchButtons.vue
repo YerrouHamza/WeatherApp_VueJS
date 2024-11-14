@@ -27,9 +27,7 @@ const toggleOption = (option: string) => {
 <template>
   <div class="switch flex-center">
     <button
-      :class="[
-        'switch-button', props.value === option.id && 'active',
-      ]"
+      :class="['switch-button', props.value === option.id && 'active']"
       v-for="option in props.options"
       :key="option.id"
       @click="toggleOption(option.id)"
@@ -49,7 +47,7 @@ const toggleOption = (option: string) => {
 .switch-button {
   min-height: 2rem;
   font-size: var(--text-sm);
-  padding: .2rem 1rem;
+  padding: 0.2rem 1rem;
   color: var(--gray-light);
   font-weight: var(--font-medium);
   border-radius: var(--raduis-sm);
