@@ -11,14 +11,14 @@ const props = defineProps({
   },
 });
 
-const barBgColor = computed(() => {
+const barColor = computed(() => {
   if (props.airQuality <= 50) {
-    return 'bg-green-500';
+    return 'success';
   } else if (props.airQuality <= 100) {
-    return 'bg-yellow-500';
-  } else {
-    return 'bg-red-500';
+    return 'warning';
   }
+
+  return 'danger';
 });
 
 const aqiBarWidth = computed(() => {
@@ -34,21 +34,57 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="space-y-1">
-    <div class="flex justify-between items-center">
-      <div class="flex items-center gap-x-2">AQI</div>
-      <div class="text-gray-600 flex items-center gap-x-1">
-        300 <InfoIcon class="size-4 text-gray-300 aqi-tooltip" />
+  <div class="air-quality">
+    <div class="air-quality_text flex-between">
+      <p>AQI</p>
+      <div class="flex-center">
+        300 <InfoIcon class="air-quality_icon aqi-tooltip" />
       </div>
     </div>
-    <div class="bg-gray-300 w-full h-2 rounded-lg">
+    <div class="air-quality_bar">
       <span
-        :class="`${barBgColor} block h-full rounded-lg`"
-        :style="{ width: `${aqiBarWidth}%` }"
+        :style="{ 
+          width: `${aqiBarWidth}%`, 
+          backgroundColor: `var(--${barColor})`
+        }"
       >
       </span>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.air-quality {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.air-quality_text {
+  font-size: var(--font-size-md);
+  color: var(--text-color-dark);
+}
+
+.air-quality_icon {
+  width: 1rem;
+  color: var(--gray-lighter);
+  outline: none;
+  transition: color .3s ease;
+}
+.air-quality_icon:hover {
+  color: var(--primary);
+  cursor: help;
+}
+
+.air-quality_bar {
+  width: 100%;
+  height: 0.5rem;
+  background-color: var(--gray-lighter);
+  border-radius: var(--raduis-sm);
+}
+.air-quality_bar span {
+  display: block;
+  height: 100%;
+  border-radius: var(--raduis-sm);
+}
+</style>

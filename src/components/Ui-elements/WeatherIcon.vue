@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 import moment from 'moment';
 
-// Import your SVG icons
 import sunnyIcon from '@/assets/sunny.svg';
 import cloudyIcon from '@/assets/cloudy.svg';
 import windIcon from '@/assets/wind.svg';

@@ -3,8 +3,7 @@ import { ref, computed } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import moment from 'moment';
 
-// Components
-import ToggleButtons from '@/components/Ui-elements/ToggleButtons.vue';
+import ToggleButtons from '@/components/Ui-elements/SwitchButtons.vue';
 import WeatherIcon from '@/components/Ui-elements/WeatherIcon.vue';
 
 const props = defineProps({
@@ -44,11 +43,10 @@ const forecast = computed(() => {
       let finalHourly = hourly.concat(tommorowHourly).slice(0, 24);
       return finalHourly;
     }
-
     return hourly;
-  } else {
-    return forecastdays;
   }
+
+  return forecastdays;
 });
 
 const setTheOption = (option: string) => {
@@ -57,7 +55,7 @@ const setTheOption = (option: string) => {
 </script>
 
 <template>
-  <div class="space-y-5">
+  <div class="forecast">
     <ToggleButtons
       :value="selectedOption"
       :options="[
@@ -67,11 +65,10 @@ const setTheOption = (option: string) => {
       :setTheOption="setTheOption"
     />
 
-    <div class="min-h-[120px]">
+    <div class="forecast_slider">
       <Swiper
         :slides-per-view="3"
         space-between="10"
-        class="mySwiper"
         v-if="forecast"
         :breakpoints="{
           640: {
@@ -82,10 +79,9 @@ const setTheOption = (option: string) => {
         <SwiperSlide
           v-for="item in forecast"
           :key="item?.id"
-          class="flex justify-between items-center gap-6"
         >
           <div
-            class="flex flex-col justify-center items-center gap-y-2 text-md"
+            class="flex-center-col"
             v-if="selectedOption === '1'"
           >
             <p>
@@ -96,7 +92,7 @@ const setTheOption = (option: string) => {
               }}
             </p>
             <WeatherIcon
-              class="size-8"
+              class="forecast_slider-icon"
               :condition="item?.condition"
               :time="item?.time"
             />
@@ -106,7 +102,7 @@ const setTheOption = (option: string) => {
           </div>
 
           <div
-            class="flex flex-col justify-center items-center gap-y-2 text-md"
+            class="flex-center-col"
             v-else-if="selectedOption === '2'"
           >
             <p>
@@ -116,7 +112,7 @@ const setTheOption = (option: string) => {
                   : moment(item?.date).format('ddd')
               }}
             </p>
-            <WeatherIcon class="size-8" :condition="item?.day?.condition" />
+            <WeatherIcon class="forecast_slider-icon" :condition="item?.day?.condition" />
             <div class="text-center">
               <p class="font-bold">
                 {{
@@ -125,7 +121,7 @@ const setTheOption = (option: string) => {
                     : item?.day?.mintemp_f
                 }}°
               </p>
-              <p class="font-bold text-gray-400">
+              <p class="font-bold text-gray">
                 {{
                   props.temperature === 'C'
                     ? item?.day?.maxtemp_c
@@ -140,4 +136,24 @@ const setTheOption = (option: string) => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.forecast {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.forecast_slider {
+  min-height: 120px;
+}
+
+.forecast_slider-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.text-gray {
+  color: var(--gray-light);
+}
+</style>

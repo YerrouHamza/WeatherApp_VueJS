@@ -25,11 +25,10 @@ const toggleOption = (option: string) => {
 </script>
 
 <template>
-  <div class="flex items-center p-1 bg-gray-200 rounded-xl w-full">
+  <div class="switch flex-center">
     <button
       :class="[
-        'text-gray-500 px-4 py-1 rounded-lg transition-all duration-200 flex-1',
-        props.value === option.id && 'bg-white text-gray-800 shadow',
+        'switch-button', props.value === option.id && 'active',
       ]"
       v-for="option in props.options"
       :key="option.id"
@@ -40,4 +39,29 @@ const toggleOption = (option: string) => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.switch {
+  padding: 0.25rem;
+  background-color: var(--gray-lighter);
+  border-radius: var(--raduis);
+  width: 100%;
+}
+.switch-button {
+  min-height: 2rem;
+  font-size: var(--text-sm);
+  padding: .2rem 1rem;
+  color: var(--gray-light);
+  font-weight: var(--font-medium);
+  border-radius: var(--raduis-sm);
+  transition: all 0.2s ease-in-out;
+  flex: 1;
+}
+.switch-button:hover {
+  color: var(--gray);
+}
+.switch-button.active {
+  background-color: var(--light);
+  color: var(--gray-dark);
+  box-shadow: var(--shadow-lg);
+}
+</style>

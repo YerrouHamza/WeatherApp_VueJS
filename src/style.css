@@ -1,41 +1,163 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --primary: #2B6CB0;
+  --danger: #FF6B6B;
+  --warning: #FFD166;
+  --success: #06D6A0;
+  --light: #ffffff;
+  --dark: #000000;
+  --gray-lighter: #e5e7eb;
+  --gray-light: #9ca3af;
+  --gray: #6b7280;
 
-@layer base {
-  body {
-    font-family: 'Inter', sans-serif;
+  --text-color-light: #EDF2F7;
+  --text-color: #4b5563;
+  --text-color-dark: #2D3748;
+
+
+  --raduis-lg: 1.5rem;
+  --raduis-md: 1rem;
+  --raduis: .75rem;
+  --raduis-sm: .5rem;
+
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, .25);
+  --shadow-xl: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  --font-size-sm: .875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-title-xl: 3rem;
+  --font-title-lg: 2rem;
+  --font-title: 1.5rem;
+
+  --font-bold: 700;
+  --font-semibold: 600;
+  --font-medium: 500;
+  --font-normal: 400;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+p {
+  font-size: var(--font-size-md);
+}
+button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+#app {
+  font-family: 'Inter', sans-serif;
+  background-image: linear-gradient(4deg, rgba(16,20,29,1) 0%, rgba(31,36,44,1) 39%, rgba(45,51,62,1) 72%);
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  padding: 1rem;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+}
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+}
+.flex-center-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5rem;
+}
+.flex-between-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+.font-bold {
+  font-weight: var(--font-bold);
+}
+
+@media screen and (max-width: 600px) {
+  .flex-center-col.row-sm, .flex-between-col.row-sm {
+    flex-direction: row; 
+  }
+  .flex-center.col-sm, .flex-between.col-sm {
+    flex-direction: column;
   }
 }
 
-.card {
-  @apply bg-white w-full rounded-3xl shadow-lg px-4 py-8 sm:p-8;
-}
-
-.center-dev {
-  @apply flex items-center justify-center;
-}
-
 .btn {
-  @apply border border-gray-200 rounded-lg shadow-md text-gray-400 hover:text-gray-700 hover:border-gray-400 transition duration-300 ease-in-out;
+  color: var(--gray-light);
+  border: 1px solid var(--gray-lighter);
+  border-radius: var(--raduis-sm);
+  padding: .2rem .5rem;
+  font-size: var(--font-size-md);
+  box-shadow: var(--shadow-xl);
+  transition: all .2s ease;
 }
-
-.modal {
-  @apply absolute top-0 right-0 z-10 bg-white rounded-xl shadow-xl border border-gray-200 py-6 px-3;
+.btn:hover {
+  border-color: var(--gray-light);
 }
-
-.modal-overlay {
-  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center w-full px-3;
+.btn-icon {
+  color: var(--text-color-dark);
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
+.btn-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
 .active-btn {
-  @apply text-gray-700 border-gray-400 outline-offset-2 outline outline-2 outline-gray-400;
+  outline: 2px solid var(--gray-lighter);
+  outline-offset: 2px;
+  border-color: var(--gray-light);
+
 }
 
 .tippy-box[data-theme~='custom'] {
-  @apply bg-white text-gray-700 rounded-lg shadow-xl border border-gray-200;
+  background-color: var(--light);
+  color: var(--color-dark);
+  border: 1px solid #dedede;
+  border-radius: 0.4rem;
+  box-shadow: var(--shadow-lg)
+}
+.tippy-box[data-theme~='custom'] .tippy-arrow {
+  color: var(--light);
+  background-color: var(--light);
+  box-shadow: var(--shadow-lg);
 }
 
-.tippy-box[data-theme~='custom'] .tippy-arrow {
-  @apply border-gray-400 bg-white text-white shadow-xl;
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }

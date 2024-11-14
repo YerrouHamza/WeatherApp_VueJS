@@ -27,17 +27,15 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="space-y-12 my-8">
-    <div class="flex flex-col sm:flex-row justify-between gap-y-5">
-      <div
-        class="flex flex-col sm:flex-row justify-between items-center gap-x-6 gap-y-3"
-      >
+  <div class="weather-details">
+    <div class="flex-between col-sm">
+      <div class="flex-center">
         <WeatherIcon
-          class="size-14"
+          class="temperature-icon"
           :condition="props.currentWeather?.condition"
           :time="props.currentWeather?.last_updated"
         />
-        <h2 class="text-5xl font-bold">
+        <h2 class="temperature">
           {{
             props.temperature === 'C'
               ? props.currentWeather?.temp_c
@@ -46,11 +44,11 @@ const props = defineProps({
         </h2>
       </div>
 
-      <div class="space-y-1 text-center sm:text-right">
-        <p class="font-medium text-3xl capitalize">
+      <div class="condition">
+        <h2 class="condition-title">
           {{ props.currentWeather?.condition?.text }}
-        </p>
-        <p class="text-md text-gray-600">
+        </h2>
+        <p class="condition-feelslike">
           Feels like
           {{
             props.temperature === 'C'
@@ -61,21 +59,21 @@ const props = defineProps({
       </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-x-20 gap-y-5">
-      <div class="col-span-2 sm:col-span-1 space-y-5">
-        <div class="flex justify-between items-center">
-          <span class="flex items-center gap-x-2">
-            <HumidityIcon class="size-5" /> Humidity
+    <div class="weather-stats">
+      <div class="stat-col">
+        <div class="stat-value flex-between">
+          <span class="flex-center">
+            <HumidityIcon class="stat-icon" /> Humidity
           </span>
-          <p class="text-black font-medium">
+          <p>
             {{ props.currentWeather?.humidity }}%
           </p>
         </div>
-        <div class="flex justify-between items-center">
-          <span class="flex items-center gap-x-2">
-            <WindIcon class="size-5" /> Wind
+        <div class="stat-value flex-between">
+          <span class="flex-center">
+            <WindIcon class="stat-icon" /> Wind
           </span>
-          <p class="text-black font-medium">
+          <p>
             {{
               measurements === 'metric'
                 ? `${props.currentWeather?.wind_kph} km/h`
@@ -84,12 +82,12 @@ const props = defineProps({
           </p>
         </div>
       </div>
-      <div class="col-span-2 sm:col-span-1 space-y-5">
-        <div class="flex justify-between items-center">
-          <span class="flex items-center gap-x-2">
-            <PrecipitationIcon class="size-5" /> Precipitation
+      <div class="stat-col">
+        <div class="stat-value flex-between">
+          <span class="flex-center">
+            <PrecipitationIcon class="stat-icon" /> Precipitation
           </span>
-          <p class="text-black font-medium">
+          <p>
             {{
               measurements === 'metric'
                 ? `${props.currentWeather?.precip_mm} mm`
@@ -97,11 +95,11 @@ const props = defineProps({
             }}
           </p>
         </div>
-        <div class="flex justify-between items-center">
-          <span class="flex items-center gap-x-2">
-            <AqiIcon class="size-5" /> AQI
+        <div class="stat-value flex-between">
+          <span class="flex-center">
+            <AqiIcon class="stat-icon" /> AQI
           </span>
-          <p class="text-black font-medium">
+          <p>
             {{ props.currentWeather?.air_quality?.co }}
           </p>
         </div>
@@ -112,4 +110,64 @@ const props = defineProps({
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.weather-details {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin: 2rem 0;
+}
+.temperature-icon {
+  width: 3.5rem;
+}
+.temperature {
+  font-size: var(--font-title-xl);
+  font-weight: var(--font-bold);
+}
+
+.condition {
+  text-align: right;
+}
+.condition-title {
+  font-size: var(--font-title-lg);
+  font-weight: var(--font-medium);
+  text-transform: capitalize;
+}
+.condition-feelslike {
+  font-size: var(--font-sm);
+  color: var(--text-color);
+}
+
+.weather-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 5rem;
+}
+.stat-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.stat-value {
+  color: var(--dark);
+  font-weight: var(--font-medium);
+}
+.stat-icon {
+  width: 1.3rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .weather-details .weather_title {
+    font-size: var(--font-title-lg);
+  }
+ 
+  .condition {
+    text-align: center;
+  }
+
+  .weather-stats {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

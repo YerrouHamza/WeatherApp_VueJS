@@ -60,22 +60,20 @@ watch(searchQuery, () => {
 </script>
 
 <template>
-  <div class="modal-overlay z-modal" @click.self="props.closeModal()">
-    <div
-      class="bg-white w-full rounded-xl shadow-lg py-4 px-3 sm:p-8 max-w-[500px] max-h-[500px] space-y-5"
-    >
-      <div class="space-y-3">
-        <h2 class="text-xl font-semibold">Search for a City</h2>
+  <div class="overlay" @click.self="props.closeModal()">
+    <div class="search-modal">
+      <div class="search-input">
+        <!-- <h2 class="title">Search for a City</h2> -->
         <input
           v-model="searchQuery"
           type="text"
           placeholder="Enter city name"
           @keydown.enter="searchCity"
-          class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+          class="search-input w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
       </div>
-
-      <div v-if="Object.keys(searchResults).length > 0">
+  
+      <div class="search-modal_body" v-if="Object.keys(searchResults).length > 0">
         <h3 class="text-md font-semibold text-gray-400 mb-2">
           Search Results:
         </h3>
@@ -94,4 +92,37 @@ watch(searchQuery, () => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.search-modal {
+  max-width: 500px;
+  max-height: 500px;
+  overflow-y: auto;
+  background-color: var(--light);
+  width: 100%;
+  border-radius: var(--raduis);
+  box-shadow: var(--shadow-lg);
+  padding: 1rem;
+}
+.search-modal_header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.search-modal_header .title {
+  /* text-xl font-semibold */
+  font-size: var(--font-title);
+  font-weight: var(--font-semibold);
+}
+.search-input {
+  /* p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 */
+  padding: var(--padding-sm);
+  border: var(--border);
+  border-color: var(--gray-300);
+  border-radius: var(--raduis-md);
+  outline: none;
+  transition: var(--transition);
+}
+.search-modal_body {
+  margin-top: 1rem;
+}
+</style>
