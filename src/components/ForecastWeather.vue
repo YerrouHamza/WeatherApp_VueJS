@@ -3,8 +3,8 @@ import { ref, computed } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import moment from 'moment';
 
-import ToggleButtons from '@/components/Ui-elements/SwitchButtons.vue';
-import WeatherIcon from '@/components/Ui-elements/WeatherIcon.vue';
+import ToggleButtons from '@/components/Ui-Elements/SwitchButton.vue';
+import WeatherIcon from '@/components/Ui-Elements/WeatherIcon.vue';
 
 const props = defineProps({
   forecastWeather: {

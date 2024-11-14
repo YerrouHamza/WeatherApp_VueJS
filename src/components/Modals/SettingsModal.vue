@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ToggleButtons from '@/components/Ui-elements/SwitchButtons.vue';
+import ToggleButtons from '@/components/Ui-Elements/SwitchButton.vue';
 
 const props = defineProps<{
   temperature: string;

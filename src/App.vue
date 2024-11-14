@@ -3,12 +3,12 @@ import { ref, onMounted, watch } from 'vue';
 import api from '@/Api/api';
 
 import LocationDetails from './components/LocationDetails.vue';
-import CurrentWeatherDetails from '@/components/CurrentWeatherDetails.vue';
-import ForcastWeather from '@/components/ForcastWeather.vue';
+import CurrentWeather from '@/components/CurrentWeather.vue';
+import ForecastWeather from '@/components/ForecastWeather.vue';
 import SettingsModal from '@/components/Modals/SettingsModal.vue';
-import OverlayLoader from '@/components/Ui-elements/OverlayLoader.vue';
-import CitySearchModal from '@/components/Modals/CitySearchModal.vue';
-import FooterComponent from '@/components/FooterComponent.vue';
+import SearchModal from '@/components/Modals/SearchModal.vue';
+import FooterCredits from '@/components/FooterCredits.vue';
+import OverlayLoader from '@/components/Ui-Elements/OverlayLoader.vue';
 import SettingIcon from '@/assets/setting.svg';
 
 const isloading = ref(true);
@@ -101,7 +101,7 @@ watch(showModal, (value) => {
 <template>
   <OverlayLoader v-if="isloading" />
 
-  <CitySearchModal
+  <SearchModal
     v-if="showCityModal"
     :open="showCityModal"
     :closeModal="() => openChangeCityModal(false)"
@@ -135,20 +135,20 @@ watch(showModal, (value) => {
       </div>
     </div>
 
-    <CurrentWeatherDetails
+    <CurrentWeather
       :currentWeather="currentWeather"
       :temperature="temperature"
       :measurements="measurements"
     />
 
-    <ForcastWeather
+    <ForecastWeather
       :forecastWeather="forecastWeather"
       :location="location"
       :temperature="temperature"
     />
   </div>
 
-  <FooterComponent />
+  <FooterCredits />
 </template>
 
 <style scoped>

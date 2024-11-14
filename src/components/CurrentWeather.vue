@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import WeatherIcon from '@/components/Ui-elements/WeatherIcon.vue';
+import WeatherIcon from '@/components/Ui-Elements/WeatherIcon.vue';
 import AirQualityBar from '@/components/AirQualityBar.vue';
 
 import HumidityIcon from '@/assets/humidity.svg';
