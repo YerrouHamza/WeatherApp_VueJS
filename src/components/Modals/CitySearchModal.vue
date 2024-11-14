@@ -2,6 +2,8 @@
 import { ref, watch } from 'vue';
 import api from '@/Api/api';
 
+import SearchIcon from '@/assets/search.svg';
+
 const props = defineProps({
   open: {
     type: Boolean,
@@ -62,27 +64,24 @@ watch(searchQuery, () => {
 <template>
   <div class="overlay" @click.self="props.closeModal()">
     <div class="search-modal">
-      <div class="search-input">
-        <!-- <h2 class="title">Search for a City</h2> -->
+      <div class="search-feild card">
+        <SearchIcon class="icon" />
         <input
           v-model="searchQuery"
           type="text"
-          placeholder="Enter city name"
+          placeholder="Search by city name"
           @keydown.enter="searchCity"
-          class="search-input w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
       </div>
   
-      <div class="search-modal_body" v-if="Object.keys(searchResults).length > 0">
-        <h3 class="text-md font-semibold text-gray-400 mb-2">
-          Search Results:
-        </h3>
-        <ul class="space-y-1">
+      <div class="search-result card" v-if="Object.keys(searchResults).length > 0">
+        <h3 class="title">Search Results</h3>
+        <ul class="result-list">
           <li
             v-for="city in searchResults"
             :key="city.id"
             @click="() => props.handelChangeCity(city)"
-            class="cursor-pointer mb-1 hover:pl-3 hover:border-l-2 hover:border-blue-500 transition-all duration-200 ease-in"
+            class="result-list__item"
           >
             {{ city?.name }}, {{ city?.country }}
           </li>
@@ -93,36 +92,68 @@ watch(searchQuery, () => {
 </template>
 
 <style scoped>
-.search-modal {
-  max-width: 500px;
-  max-height: 500px;
-  overflow-y: auto;
+.card {
   background-color: var(--light);
-  width: 100%;
   border-radius: var(--raduis);
-  box-shadow: var(--shadow-lg);
-  padding: 1rem;
 }
-.search-modal_header {
+.search-modal {
+  max-width: 600px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.search-modal_header .title {
-  /* text-xl font-semibold */
-  font-size: var(--font-title);
-  font-weight: var(--font-semibold);
-}
-.search-input {
-  /* p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 */
+.search-feild {
   padding: var(--padding-sm);
-  border: var(--border);
-  border-color: var(--gray-300);
-  border-radius: var(--raduis-md);
-  outline: none;
-  transition: var(--transition);
+  padding: .4rem 1rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--light);
+  transition: all 0.2s ease-in-out;
 }
-.search-modal_body {
-  margin-top: 1rem;
+.search-feild:is(:focus-within) {
+  box-shadow: var(--shadow-primary);
+}
+.search-feild .icon {
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-right: .5rem;
+  color: var(--gray);
+}
+.search-feild input {
+  font-size: var(--font-size-lg);
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+.search-result {
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 1.4rem 1rem;
+  border: 1px solid var(--light);
+  border-top: none;
+}
+.search-result .title {
+  color: var(--gray);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-medium);
+  margin-bottom: 1.5rem;
+}
+.result-list {
+  list-style: none;
+  padding: 0;
+}
+.result-list__item {
+  padding: .6rem 1rem;
+  border-radius: var(--raduis-sm);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.result-list__item:hover {
+  background-color: var(--light-primary);
+  color: var(--primary);
 }
 </style>

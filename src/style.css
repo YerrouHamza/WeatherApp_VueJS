@@ -1,5 +1,6 @@
 :root {
   --primary: #2B6CB0;
+  --light-primary: rgba(43, 107, 176, 0.3);
   --danger: #FF6B6B;
   --warning: #FFD166;
   --success: #06D6A0;
@@ -21,6 +22,7 @@
 
   --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, .25);
   --shadow-xl: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --shadow-primary: rgba(43, 107, 176, 0.7) 0px 0px 0px 4px;
 
   --font-size-sm: .875rem;
   --font-size-md: 1rem;
@@ -39,7 +41,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
 }
+
 p {
   font-size: var(--font-size-md);
 }
