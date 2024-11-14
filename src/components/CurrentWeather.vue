@@ -144,7 +144,7 @@ const props = defineProps({
   gap: 1rem;
 }
 .stat-value {
-  color: var(--dark);
+  color: var(--text-color-dark);
   font-weight: var(--font-medium);
 }
 .stat-icon {

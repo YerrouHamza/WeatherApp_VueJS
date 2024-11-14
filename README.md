@@ -22,13 +22,14 @@ This project was built with the following technologies and tools:
 
 - **Framework**: Vue.js 3.5
 - **Language**: TypeScript 5.6
-- **Styling**: Tailwind CSS – A utility-first CSS framework used for responsive and consistent styling across components.
+- **Styling**: Implemented using vanilla CSS for responsive and cohesive design across components, utilizing CSS root variables for theme consistency and Vue scoped styles for component-specific customizations.
 - **HTTP Requests**: Axios – Axios is configured with a custom client (axios.create) to handle API requests, setting the base URL, headers, and API key.
 - **Date Formatting**: moment.js – Used for handling date and time formatting, such as determining day/night and displaying formatted timestamps.
 - **Slider**: Swiper.js – Provides a smooth slider experience for displaying the hourly weather forecast.
 - **Tooltips**: Tippy.js – Adds tooltips to the app, such as in the AQI (Air Quality Index) section in the current weather.
-- **Linting & Formatting**: ESLint and Prettier – Used to enforce consistent code style and formatting, helping maintain code readability and quality.
-- **Icons**: Custom SVG icons – Sourced from Figma designs specific to this app.
+- **Linting**: ESLint – Used to enforce consistent code style and maintain code readability and quality.
+- **Formatting**: Prettier – Used to enforce consistent code formatting.
+- **Icons**: Custom SVG icons – Sourced from _Figma designs_ specific to this app and from _Iconfinder_ for general icons.
 - **SVG Handling**: vite-svg-loader – Enables SVGs to be imported and used as Vue components, which simplifies icon integration.
 
 ## Installation
@@ -55,6 +56,18 @@ Instructions on how to run or use the project.
   npm run dev
   ```
 - **Build for production**:
+
   ```bash
   npm run build
+  ```
+
+- **linting**:
+
+  ```bash
+  npm run lint
+  ```
+
+- **Formatting**:
+  ```bash
+   npm run format
   ```
