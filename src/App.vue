@@ -117,8 +117,8 @@ watch(showModal, (value) => {
     :onSetMeasurements="setMeasurements"
   />
 
-  <div class="waether-card">
-    <div class="waether-card_header">
+  <div class="weather-card">
+    <div class="weather-card_header">
       <LocationDetails
         :location="location"
         :openChangeCityModal="openChangeCityModal"
@@ -152,7 +152,7 @@ watch(showModal, (value) => {
 </template>
 
 <style scoped>
-.waether-card {
+.weather-card {
   max-width: 800px;
   width: 100%;
   height: 100%;
@@ -161,7 +161,7 @@ watch(showModal, (value) => {
   box-shadow: var(--shadow-lg);
   padding: 2rem;
 }
-.waether-card_header {
+.weather-card_header {
   display: flex;
   justify-content: space-between;
   align-items: start;
@@ -172,10 +172,10 @@ watch(showModal, (value) => {
 }
 
 @media only screen and (max-width: 600px) {
-  .waether-card {
+  .weather-card {
     padding: 1rem;
   }
-  .waether-card_header {
+  .weather-card_header {
     gap: 1rem;
   }
 }
